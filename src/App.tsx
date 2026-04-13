@@ -316,11 +316,12 @@ function UICard({ code }: { code: string }) {
           options.push({ value: optMatch[1], label: optMatch[2].trim() });
         }
         elements.push(
-          <InteractiveCombobox 
-            key={key++} 
-            placeholder={getProp('placeholder') || 'Select...'} 
-            options={options} 
-          />
+          <div key={key++} className="w-full">
+            <InteractiveCombobox 
+              placeholder={getProp('placeholder') || 'Select...'} 
+              options={options} 
+            />
+          </div>
         );
       } else if (tag === 'Button') {
         elements.push(
@@ -343,7 +344,9 @@ function UICard({ code }: { code: string }) {
       } else if (tag === 'Switch') {
         const isChecked = getProp('checked') === true;
         elements.push(
-          <InteractiveSwitch key={key++} defaultChecked={isChecked} />
+          <div key={key++}>
+            <InteractiveSwitch defaultChecked={isChecked} />
+          </div>
         );
       }
     }
